@@ -1,4 +1,2 @@
 hello-world
-inhoud-portfolio
-section
-xxx
+cv
