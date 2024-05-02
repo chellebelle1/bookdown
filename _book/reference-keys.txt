@@ -1,5 +1,4 @@
 portfolio
-inhoud-portfolio
 cv
 education
 important-courses
