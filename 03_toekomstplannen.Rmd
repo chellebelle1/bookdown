@@ -1,9 +1,3 @@
----
-author: "Rachelle Balgit"
-date: "`r Sys.Date()`"
-output: html_document
----
-
 # MALDIquant 
 
 Door mijn intresse in bacteriën en virussen heb ik in mijn derde jaar gekozen voor de specialisatie microbiologie. Hierbij moest ik voor een project werken met de bacterie _Porphyromonas gingivalis_. De bacterie werd hierbij blootgesteld aan verschillende concentraties magnesium en ijzer. Om het effect hiervan te meten op het aantal uitgescheiden outer membrane vesicles (OMV's), werd er gebruik gemaakt van een fluorescentie microscoop en MALDI-TOF MS. 
