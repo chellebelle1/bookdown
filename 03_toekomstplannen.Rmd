@@ -11,7 +11,7 @@ De eerste twee dagen zal ik vooral oefenen met het gebruik van de package. Op in
 ## start 
 
 
-```{r, echo=TRUE, eval=TRUE}
+```{r, Vignettte, echo=TRUE, eval=TRUE}
 # Installeer de juiste packages 
 # install.packages(c("MALDIquant", "MALDIquantForeign"))
 library(MALDIquant)
