@@ -154,6 +154,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.2" data-path="open-peer-review.html"><a href="open-peer-review.html#summary"><i class="fa fa-check"></i><b>4.2</b> Summary</a></li>
 <li class="chapter" data-level="4.3" data-path="open-peer-review.html"><a href="open-peer-review.html#review"><i class="fa fa-check"></i><b>4.3</b> Review</a></li>
 </ul></li>
+<li class="chapter" data-level="5" data-path="datetime-r-package.html"><a href="datetime-r-package.html"><i class="fa fa-check"></i><b>5</b> DateTime R Package</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="datetime-r-package.html"><a href="datetime-r-package.html#introduction"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
+<li class="chapter" data-level="5.2" data-path="datetime-r-package.html"><a href="datetime-r-package.html#installation"><i class="fa fa-check"></i><b>5.2</b> Installation</a></li>
+<li class="chapter" data-level="5.3" data-path="datetime-r-package.html"><a href="datetime-r-package.html#fuctions-of-the-package"><i class="fa fa-check"></i><b>5.3</b> Fuctions of the package</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="datetime-r-package.html"><a href="datetime-r-package.html#calculating-date-difference"><i class="fa fa-check"></i><b>5.3.1</b> Calculating date difference</a></li>
+<li class="chapter" data-level="5.3.2" data-path="datetime-r-package.html"><a href="datetime-r-package.html#add-time-to-a-date"><i class="fa fa-check"></i><b>5.3.2</b> Add time to a date</a></li>
+<li class="chapter" data-level="5.3.3" data-path="datetime-r-package.html"><a href="datetime-r-package.html#check-if-two-dates-are-on-the-same-day"><i class="fa fa-check"></i><b>5.3.3</b> Check if two dates are on the same day</a></li>
+<li class="chapter" data-level="5.3.4" data-path="datetime-r-package.html"><a href="datetime-r-package.html#check-for-dutch-holidays"><i class="fa fa-check"></i><b>5.3.4</b> Check for Dutch holidays</a></li>
+</ul></li>
+</ul></li>
 </ul>
 
       </nav>
@@ -233,9 +245,9 @@ Door op internet informatie te vinden over de package zou ik deze willen toepass
 <pre><code>## [1] TRUE</code></pre>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="maldiquant.html#cb15-1" tabindex="-1"></a><span class="co"># plot</span></span>
 <span id="cb15-2"><a href="maldiquant.html#cb15-2" tabindex="-1"></a><span class="fu">plot</span>(fiedler2009subset[[<span class="dv">1</span>]])</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/Vignettte-1.png" width="672" /></p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="maldiquant.html#cb16-1" tabindex="-1"></a><span class="fu">plot</span>(fiedler2009subset[[<span class="dv">16</span>]])</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-1-2.png" width="672" /></p>
+<p><img src="_main_files/figure-html/Vignettte-2.png" width="672" /></p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="maldiquant.html#cb17-1" tabindex="-1"></a>fiedler2009subset[<span class="dv">16</span>]</span></code></pre></div>
 <pre><code>## $sPankreas_HB_L_061019_D9.G18.T_0209513_0020740_18
 ## S4 class type            : MassSpectrum               
@@ -257,11 +269,11 @@ Door op internet informatie te vinden over de package zou ik deze willen toepass
 <span id="cb19-10"><a href="maldiquant.html#cb19-10" tabindex="-1"></a>                              <span class="at">iterations=</span><span class="dv">100</span>)</span>
 <span id="cb19-11"><a href="maldiquant.html#cb19-11" tabindex="-1"></a><span class="fu">plot</span>(spectra[[<span class="dv">16</span>]])</span>
 <span id="cb19-12"><a href="maldiquant.html#cb19-12" tabindex="-1"></a><span class="fu">lines</span>(baseline, <span class="at">col=</span><span class="st">&quot;red&quot;</span>, <span class="at">lwd=</span><span class="dv">2</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-1-3.png" width="672" /></p>
+<p><img src="_main_files/figure-html/Vignettte-3.png" width="672" /></p>
 <div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="maldiquant.html#cb20-1" tabindex="-1"></a>spectra <span class="ot">&lt;-</span> <span class="fu">removeBaseline</span>(spectra, <span class="at">method=</span><span class="st">&quot;SNIP&quot;</span>,</span>
 <span id="cb20-2"><a href="maldiquant.html#cb20-2" tabindex="-1"></a>                           <span class="at">iterations=</span><span class="dv">100</span>)</span>
 <span id="cb20-3"><a href="maldiquant.html#cb20-3" tabindex="-1"></a><span class="fu">plot</span>(spectra[[<span class="dv">1</span>]])</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-1-4.png" width="672" /></p>
+<p><img src="_main_files/figure-html/Vignettte-4.png" width="672" /></p>
 <div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="maldiquant.html#cb21-1" tabindex="-1"></a><span class="co"># normalisatie </span></span>
 <span id="cb21-2"><a href="maldiquant.html#cb21-2" tabindex="-1"></a>spectra <span class="ot">&lt;-</span> <span class="fu">calibrateIntensity</span>(spectra, <span class="at">method=</span><span class="st">&quot;TIC&quot;</span>)</span>
 <span id="cb21-3"><a href="maldiquant.html#cb21-3" tabindex="-1"></a></span>
@@ -283,12 +295,12 @@ Door op internet informatie te vinden over de package zou ik deze willen toepass
 <span id="cb21-19"><a href="maldiquant.html#cb21-19" tabindex="-1"></a> <span class="fu">plot</span>(avgSpectra[[<span class="dv">1</span>]], <span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">4000</span>, <span class="dv">5000</span>), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.002</span>))</span>
 <span id="cb21-20"><a href="maldiquant.html#cb21-20" tabindex="-1"></a> <span class="fu">lines</span>(noise, <span class="at">col=</span><span class="st">&quot;red&quot;</span>)</span>
 <span id="cb21-21"><a href="maldiquant.html#cb21-21" tabindex="-1"></a> <span class="fu">lines</span>(noise[,<span class="dv">1</span>], noise[, <span class="dv">2</span>]<span class="sc">*</span><span class="dv">2</span>, <span class="at">col=</span><span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-1-5.png" width="672" /></p>
+<p><img src="_main_files/figure-html/Vignettte-5.png" width="672" /></p>
 <div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="maldiquant.html#cb22-1" tabindex="-1"></a>peaks <span class="ot">&lt;-</span> <span class="fu">detectPeaks</span>(avgSpectra, <span class="at">method=</span><span class="st">&quot;MAD&quot;</span>,</span>
 <span id="cb22-2"><a href="maldiquant.html#cb22-2" tabindex="-1"></a>                       <span class="at">halfWindowSize=</span><span class="dv">20</span>, <span class="at">SNR=</span><span class="dv">2</span>)</span>
 <span id="cb22-3"><a href="maldiquant.html#cb22-3" tabindex="-1"></a><span class="fu">plot</span>(avgSpectra[[<span class="dv">1</span>]], <span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">4000</span>, <span class="dv">5000</span>), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.002</span>))</span>
 <span id="cb22-4"><a href="maldiquant.html#cb22-4" tabindex="-1"></a><span class="fu">points</span>(peaks[[<span class="dv">1</span>]], <span class="at">col=</span><span class="st">&quot;red&quot;</span>, <span class="at">pch=</span><span class="dv">4</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-1-6.png" width="672" /></p>
+<p><img src="_main_files/figure-html/Vignettte-6.png" width="672" /></p>
 <div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="maldiquant.html#cb23-1" tabindex="-1"></a><span class="co"># peak binning  </span></span>
 <span id="cb23-2"><a href="maldiquant.html#cb23-2" tabindex="-1"></a>peaks <span class="ot">&lt;-</span> <span class="fu">binPeaks</span>(peaks, <span class="at">tolerance=</span><span class="fl">0.002</span>)</span>
 <span id="cb23-3"><a href="maldiquant.html#cb23-3" tabindex="-1"></a></span>
