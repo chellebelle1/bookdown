@@ -1,0 +1,33 @@
+# Projecticum NER
+
+## Introduction
+For the _Data science For Biology_ course I’m working on a project to help develop Physiologically Based Kinetics (PBK) models, which are used to simulate how chemicals are metabolized in the human body. Building these models is a challenging process that requires collecting a lot of data, like chemical concentrations, tissue properties, and toxicokinetic profiles. This can be time-consuming, error-prone, and difficult to reproduce.
+
+My role in the project is to train a small *Named Entity Recognition (NER)* model that can automatically identify and extract specific details from the methods sections of scientific articles, such as cell culture conditions and incubation times. I’ll be training the model with the use of Python, and my first step is to get familiar with the annotation tool Prodigy and set up a prototype of the model.
+
+## Physiologically Based Pharmacokinetic models 
+Physiologically Based Pharmacokinetic (PBPK) models are mathematical models encompassing multiple compartments with physiology, anatomy, biochemical and physicochemical parameters for describing ADME (absorption, distribution, metabolism and excretion) of xenobiotics and their metabolites. These models vary from empirical, semi-mechanistic to compartmental models based on the complexity of the problem. The major challenge with empirical or semi-mechanistic models is their difficulty with interpreting questions such as “How to predict concentration–time profile of compound in target organ” or “How to accurately predict the exact dosing while extrapolating from animal to human”. This led to the development of compartmental models, which are close to human anatomy and physiology. Currently, these models are widely acknowledged in the field of pharmaceutical and environmental science for the prediction of PK behavior of xenobiotics (drug/chemical) with respect to dose, route and species [^1].
+
+## Prodigy
+Machine learning systems are built from both code and data. It’s easy to reuse the code but hard to reuse the data, so building AI mostly means doing annotation.
+
+Prodigy addresses the big remaining problem: annotation and training. The typical approach to annotation forces projects into an uncomfortable waterfall process. The experiments can’t begin until the first batch of annotations are complete, but the annotation team can’t start until they receive the annotation manuals. To produce the annotation manuals, you need to know what statistical models will be required for the features you’re trying to build. Machine learning is an inherently uncertain technology, but the waterfall annotation process relies on accurate upfront planning. The net result is a lot of wasted effort. Prodigy solves this problem by letting data scientists conduct their own annotations, for rapid prototyping
+
+Most annotation tools avoid making any suggestions to the user, to avoid biasing the annotations. Prodigy takes the opposite approach: ask the user as little as possible, and try to guess the rest. Prodigy puts the model in the loop, so that it can actively participate in the training process and learns as you go. The model uses what it already knows to figure out what to ask you next. As you answer the questions, the model is updated, influencing which examples it asks you about next. In order to take full advantage of this strategy, Prodigy is provided as a Python library and command line utility, with a flexible web application [^2].
+
+## Named Entity Recognition models 
+Named Entity Recognition (NER) is a critical component of Natural Language Processing (NLP) that involves identifying and classifying named entities in text into predefined categories such as people, organizations, locations, dates, and more. spaCy, a robust NLP library in Python, offers advanced tools for NER, providing a user-friendly API and powerful models.
+
+Named Entity Recognition is a sub-task of information extraction that aims to locate and classify entities within text. These entities are categorized into various predefined classes such as:
+
+NER is pivotal for tasks like information retrieval, question answering, and text summarization. It helps in structuring unstructured data, making it easier to analyze and use in applications.
+
+spaCy is an open-source NLP library designed for efficient and productive development. It supports tokenization, part-of-speech tagging, dependency parsing, and NER. spaCy’s models are pre-trained on large datasets, which makes it an excellent choice for building robust NLP applications [^3].
+
+
+## References 
+[^1]: Deepika, D., & Kumar, V. (2023). The role of “Physiologically Based Pharmacokinetic Model (PBPK)” New Approach Methodology (NAM) in Pharmaceuticals and Environmental Chemical Risk assessment. International Journal of Environmental Research and Public Health, 20(4), 3473. https://doi.org/10.3390/ijerph20043473
+
+[^2]: Montani, I. (2019, August 22). Getting started with Prodigy: A step-by-step guide. Ines Montani. https://ines.io/blog/prodigy-first-steps
+
+[^3]: Mljourney. (2024, July 27). Named Entity Recognition with spaCy - ML Journey. ML Journey. https://mljourney.com/named-entity-recognition-with-spacy/

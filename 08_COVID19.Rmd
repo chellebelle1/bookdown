@@ -1,0 +1,6 @@
+# Parameterized COVID-19 report 
+
+Parameterized reporting is a technique that allows you to generate multiple reports simultaneously. By using parameterized reporting, you can follow the same process to make 3,000 reports as you would to make one report. The technique also makes your work more accurate, as it avoids copy-and-paste errors.
+
+In this chapter we're making a parameterized report of COVID-19 data obtained from the European Center for Disease Control (ECDC). 
+

@@ -6,4 +6,3 @@ output:
   #bookdown::pdf_book: default
 ---
 
-# Introductie
