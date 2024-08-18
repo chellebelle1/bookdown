@@ -1,51 +1,69 @@
 # MALDIquant 
 
 ## Intro 
-Door mijn intresse in bacteriën en virussen heb ik in mijn derde jaar gekozen voor de specialisatie microbiologie. Hierbij moest ik voor een project werken met de bacterie _Porphyromonas gingivalis_. De bacterie werd hierbij blootgesteld aan verschillende concentraties magnesium en ijzer. Om het effect hiervan te meten op het aantal uitgescheiden outer membrane vesicles (OMV's), werd er gebruik gemaakt van een fluorescentie microscoop en MALDI-TOF MS. 
+Due to my interest in bacteria and viruses, I chose the specialization in microbiology in my third year. For a project, I worked with the bacterium Porphyromonas gingivalis, exposing it to different concentrations of magnesium and iron. To measure the effect of these elements on the number of secreted outer membrane vesicles (OMVs), a fluorescence microscope and MALDI-TOF MS were used.
 
-Voor MALDI-TOF MS data bestaat er een package genaamd MALDIquant, met een complete pipeline voor analyse. Omdat ik de MALDI-TOF MS een interessante techniek vind in de microbiologie, lijkt het me leuk om uit te zoeken hoe deze package werkt. 
-Door op internet informatie te vinden over de package zou ik deze willen toepassen op mijn vorige project om de resultaten die ik toen had en nu heb te vergelijken. Hiermee zou ik in 4 dagen mee kunnen beginnen. 
+For MALDI-TOF MS data, there is a package called MALDIquant, which provides a complete pipeline for analysis. Since I find MALDI-TOF MS to be an interesting technique in microbiology, I would like to explore how this package works. By finding information about the package online, I plan to apply it to my previous project to compare the results I had then with the ones I have now. I could start working on this in four days.
 
-De eerste twee dagen zal ik vooral oefenen met het gebruik van de package. Op internet zijn er verschillende manuals te vinden en die zou ik kunnen doorlopen met fake-data. Vervolgens kan ik proberen of ik de package kan laten runnen op mijn eigen data.  
+### Schedule 
+In the first two days, I will mainly practice using the package. There are various manuals available online that I can go through with fake data. Afterward, I can try running the package on my own data. 
 
-## start 
+- Day one: explore MALDIquant (& some MALDITOF-MS theory)
 
+- Day two & three: try some codes, manuals of MALDIquant
 
-```{r, Vignettte, echo=TRUE, eval=TRUE}
-# Installeer de juiste packages 
+- Day four: Try the code on own data 
+
+## Manual 
+
+The script shown below, uses the MALDIquant package to process and analyze MALDI-TOF MS data. It begins by installing and loading the necessary packages. A mass spectrum object is created to represent the data, followed by importing example data, specifically a subset of MALDI-TOF data from a study by Fiedler et al. (2009).
+
+Quality control checks are performed to ensure that all spectra have a consistent number of non-empty data points and that the data points are regular. The script then visualizes the spectra by plotting them, which provides an initial look at the data.
+
+Next, the script applies variance stabilization to the spectra, which is crucial for making the data more consistent. Smoothing is applied to reduce noise, followed by baseline correction to remove any background noise that might affect the analysis. After baseline correction, the spectra are normalized to ensure they are on a comparable scale.
+
+Spectra alignment is then performed, which involves adjusting the spectra so that peaks align correctly across samples. This step is essential for accurate comparison. The script identifies the samples within the spectra and averages them to create a single spectrum per sample.
+
+Peak detection is carried out on the averaged spectra, and noise estimation is included to identify and highlight significant peaks. These peaks are then binned, which groups similar peaks together based on a specified tolerance. Finally, the script creates a feature matrix, which contains the intensity values of these peaks, ready for further analysis [^1].
+
+```{r, Vignette}
+# Install the necessary packages
 # install.packages(c("MALDIquant", "MALDIquantForeign"))
 library(MALDIquant)
 
-# MALDIquant objects 
+# Creating a MALDIquant mass spectrum object
+# mass is the m/z value 
+# intensity is how many detected ions per peak
 s <- createMassSpectrum(mass=1:10, intensity=1:10,
                         metaData=list(name="Spectrum1"))
 s
 
-# importeer voorbeeld data 
-# subset van MALDI-TOF data van Fiedler et al(2009)
+# Importing example data
+# A subset of MALDI-TOF data from Fiedler et al. (2009)
 data("fiedler2009subset")
 length(fiedler2009subset)
 fiedler2009subset[1:2]
 
-# quality control: alle spectra hetzelfde aantal data punten die niet leeg zijn
+# Quality control: Check if all spectra have the same number of non-empty data points
 any(sapply(fiedler2009subset, isEmpty))
 table(sapply(fiedler2009subset, length))
 
 all(sapply(fiedler2009subset, isRegular))
 
-# plot
+# Plotting the spectra
 plot(fiedler2009subset[[1]])
 plot(fiedler2009subset[[16]])
 fiedler2009subset[16]
 
-# variance stabilization 
+# Variance stabilization 
 spectra <- transformIntensity(fiedler2009subset,
                               method = "sqrt")
-# smoothing 
+
+# Smoothing the spectra
 spectra <- smoothIntensity(spectra, method="SavitzkyGolay",
                            halfWindowSize=10)
 
-# baseline correction
+# Baseline correction
 baseline <- estimateBaseline(spectra[[16]], method="SNIP",
                               iterations=100)
 plot(spectra[[16]])
@@ -55,10 +73,10 @@ spectra <- removeBaseline(spectra, method="SNIP",
                            iterations=100)
 plot(spectra[[1]])
 
-# normalisatie 
+# Normalization 
 spectra <- calibrateIntensity(spectra, method="TIC")
 
-# alignment 
+# Alignment of spectra
 spectra <- alignSpectra(spectra,
                         halfWindowSize=20,
                         SNR=2,
@@ -71,22 +89,43 @@ samples <- factor(sapply(spectra,
 avgSpectra <- averageMassSpectra(spectra, labels=samples,
                                   method="mean")
 
-# Peak detectie 
+# Peak detection
 noise <- estimateNoise(avgSpectra[[1]])
- plot(avgSpectra[[1]], xlim=c(4000, 5000), ylim=c(0, 0.002))
- lines(noise, col="red")
- lines(noise[,1], noise[, 2]*2, col="blue")
- 
+plot(avgSpectra[[1]], xlim=c(4000, 5000), ylim=c(0, 0.002))
+lines(noise, col="red")
+lines(noise[,1], noise[, 2]*2, col="blue")
+
 peaks <- detectPeaks(avgSpectra, method="MAD",
-                       halfWindowSize=20, SNR=2)
+                     halfWindowSize=20, SNR=2)
 plot(avgSpectra[[1]], xlim=c(4000, 5000), ylim=c(0, 0.002))
 points(peaks[[1]], col="red", pch=4)
-  
-# peak binning  
+
+# Peak binning  
 peaks <- binPeaks(peaks, tolerance=0.002)
 
-# feature matrix 
+# Creating a feature matrix 
 peaks <- filterPeaks(peaks, minFrequency=0.25)
 featureMatrix <- intensityMatrix(peaks, avgSpectra)
 head(featureMatrix[, 1:3])
+
+# Plot example results
+par(mfrow = c(2, 3))
+xlim <- range(mass(spectra[[1]]))  # Use the same xlim for all plots for better comparison
+plot(spectra[[1]], main = "1: raw", sub = "", xlim = xlim)
+plot(spectra[[1]], main = "2: variance stabilization", sub = "", xlim = xlim)
+plot(spectra[[1]], main = "3: smoothing", sub = "", xlim = xlim)
+plot(spectra[[1]], main = "4: baseline correction", sub = "", xlim = xlim)
+plot(spectra[[1]], main = "5: peak detection", sub = "", xlim = xlim)
+points(peaks[[1]])
+par(mfrow = c(1, 1))
+
 ```
+
+
+*Creating a MALDIquant mass spectrum object* -> you would only use this function when you are working with raw/custom data that you need to put manually in Rstudio. The fiedler2009subdata is already in the MassSpectrum object. 
+
+Without your data in a MassSpectrum object you would need to manually structure your data for every step of the analysis, which would be prone to errors. 
+
+## References 
+
+[^1]: Gibb, S. (2024, January 22). MALDIquant: Quantitative analysis of mass spectrometry data [Vignette]. CRAN. https://cran.r-project.org/web/packages/MALDIquant/vignettes/MALDIquant-intro.pdf

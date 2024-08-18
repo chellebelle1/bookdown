@@ -1,12 +1,1 @@
-
-# SQL 
-hi 
-
-```{r, inladen data}
-library(readr)
-flu_data <- read_csv("~/School/flu_data.csv")
-
-dengue_data <- read_csv("~/School/dengue_data.csv")
-
-```
-
+# SQL
