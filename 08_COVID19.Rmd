@@ -6,7 +6,7 @@ In this chapter we're making a parameterized report of COVID-19 data obtained fr
 
 
 ## Importeren en inspecteren {-}
-```{r, echo=F, message=F}
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
 library(readr)
 # importeren data
 covid_data <- read_csv("~/Rachelle/data.csv")
@@ -15,15 +15,15 @@ library(reactable)
 reactable(covid_data, defaultPageSize =10, compact = TRUE)
 ```
 
-## Lijngrafiek Nederland, Frankrijk en Spanje {-}
-Met de ECDC COVID-19 gegevens is er een visuele weergave van COVID-19 cases en deaths in geselecteerde landen en jaargetallen. De grafieken tonen het aantal cases en deaths per datum. Door gebruik te maken van parametrisatie in de R-code met `params$`, kan dit rapport eenvoudig aangepast worden aan specifieke interesses zonder dat je de onderliggende code hoeft te wijzigen.
-```{r, echo=F, message=F, fig.cap= "Lijngrafiek van COVID-19 data, waarbij de datum in jaar en maand op de x-as staat, de aantal cases op de y-as. Verschillende kleuren vertegenwoordigen geselecteerde landen Nederland, Germany en Belgium"}
+## Line chart the Netherlands, Belgium and Germany {-}
+Using the ECDC COVID-19 data, there is a visual representation of COVID-19 cases and deaths in selected countries and years. The graphs display the number of cases and deaths per date. By utilizing parameterization in the R code with params$, this report can be easily tailored to specific interests without needing to modify the underlying code.
+```{r, echo=F, message=F, fig.cap= "Line chart of the COVID-19 data from the Netherlands, Belgium and Germany, with the date in years and month on t x-axis, and the amount of cases on the y-axis. de datum in jaar en maand op de x-as staat, de aantal cases op de y-as."}
 
 library(ggplot2)
 
 # parameters
 param <- list(
-  selecteer_land= c('Netherlands', 'Germany', 'Belgium'),
+  selecteer_land= c('the Netherlands', 'Germany', 'Belgium'),
   selecteer_jaar= 2020
 )
 
@@ -39,13 +39,13 @@ agg_data <- aggregate(cbind(cases, deaths) ~ dateRep + countriesAndTerritories, 
 # grafiek cases
 cases_plot <- ggplot(agg_data, aes(x=dateRep, y=cases, color=countriesAndTerritories)) +
   geom_line() +
-  labs(title=paste('COVID-19 cases in geselecteerde landen in tijd', param$selecteer_jaar), x='Datum', y='Aantal cases') +
+  labs(title=paste('COVID-19 cases in selected countries in time', param$selecteer_jaar), x='Date', y=' amount of cases') +
   theme_minimal()
 
 # grafiek deaths
 deaths_plot <- ggplot(agg_data, aes(x=dateRep, y=deaths, color=countriesAndTerritories)) +
   geom_line() +
-  labs(title=paste('COVID-19 deaths in geselecteerde landen in tijd', param$selecteer_jaar), x='Datum', y='Aantal cases') +
+  labs(title=paste('COVID-19 deaths in selected countries in time', param$selecteer_jaar), x='Date', y='amount of cases') +
   theme_minimal()
 
 # plot grafieken
@@ -54,9 +54,9 @@ print(deaths_plot)
 
 ```
 
-## Lijngrafiek Roemenië, Noorwegen en Italië {-}
-Om te controleren of de parametrisatie correct functioneert, kan je de waarden in de parameterlijst aanpassen. In dit voorbeeld worden de landen Roemenië, Noorwegen en Italië gebruikt en het jaar 2021.
-```{r, echo=F, message=F, fig.cap= "Lijngrafiek van COVID-19 data, waarbij de datum in jaar en maand op de x-as staat, de aantal cases op de y-as. Verschillende kleuren vertegenwoordigen geselecteerde landen Romania, Liechtenstein en Italy"}
+## Line chart Romania, Liechtenstein and Italy {-}
+To verify that the parameterization is working correctly, you can adjust the values in the parameter list. In this example, the countries Romania, Norway, and Italy are used, along with the year 2022
+```{r, echo=F, message=F, fig.cap= "Line chart of COVID-19 data, with the date in year and month on the x-axis, the number of cases on the y-axis. Different colors represent the selected countries Romania, Liechtenstein, and Italy."}
 library(ggplot2)
 
 # parameters
@@ -77,13 +77,13 @@ agg_data <- aggregate(cbind(cases, deaths) ~ dateRep + countriesAndTerritories, 
 # grafiek cases
 cases_plot <- ggplot(agg_data, aes(x=dateRep, y=cases, color=countriesAndTerritories)) +
   geom_line() +
-  labs(title=paste('COVID-19 cases in geselecteerde landen in tijd', param$selecteer_jaar), x='Datum', y='Aantal cases') +
+  labs(title=paste('COVID-19 cases in slected countries in time', param$selecteer_jaar), x='Date', y='Amount of cases') +
   theme_minimal()
 
 # grafiek deaths
 deaths_plot <- ggplot(agg_data, aes(x=dateRep, y=deaths, color=countriesAndTerritories)) +
   geom_line() +
-  labs(title=paste('COVID-19 deaths in geselecteerde landen in tijd', param$selecteer_jaar), x='Datum', y='Aantal cases') +
+  labs(title=paste('COVID-19 cases in slected countries in time', param$selecteer_jaar), x='Date', y='Amount of cases') +
   theme_minimal()
 
 # plot grafieken

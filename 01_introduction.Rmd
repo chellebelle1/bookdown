@@ -1,3 +1,7 @@
 # Introductie 
 
-hi
+Hi, welcome to My Portfolio!
+
+My name is Rachelle Balgit, and this portfolio serves as a comprehensive collection of my work and projects in the fields of data analysis and scientific research. As a student in life sciences, I have dedicated myself to exploring and analyzing biological data to uncover insights that are both impact- and meaningful.
+
+This portfolio showcases a diverse array of projects and assignments, ranging from academic research endeavors to practical data analysis and visualization tasks. Each project is crafted to highlight my proficiency in data analysis, programming, and problem-solving, demonstrating the skills and expertise I have developed throughout this course.

@@ -14,6 +14,9 @@ In the first two days, I will mainly practice using the package. There are vario
 
 - Day four: Try the code on own data 
 
+### Videos 
+There is one video I found on YouTube, in which a girl explains her way of using MALDIquant: https://www.youtube.com/watch?v=KwCRV885Z-k&t=214s
+
 ## Manual 
 
 The script shown below, uses the MALDIquant package to process and analyze MALDI-TOF MS data. It begins by installing and loading the necessary packages. A mass spectrum object is created to represent the data, followed by importing example data, specifically a subset of MALDI-TOF data from a study by Fiedler et al. (2009).
