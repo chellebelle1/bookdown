@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>7 DateTime R Package | _main.knit</title>
+  <title>3 Guerilla Analytics | _main.knit</title>
   <meta name="description" content="" />
   <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="7 DateTime R Package | _main.knit" />
+  <meta property="og:title" content="3 Guerilla Analytics | _main.knit" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="7 DateTime R Package | _main.knit" />
+  <meta name="twitter:title" content="3 Guerilla Analytics | _main.knit" />
   
   
   
@@ -28,8 +28,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="sql.html"/>
-<link rel="next" href="projecticum-ner.html"/>
+<link rel="prev" href="cv.html"/>
+<link rel="next" href="open-peer-review.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -212,113 +212,44 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="datetime-r-package" class="section level1 hasAnchor" number="7">
-<h1><span class="header-section-number">7</span> DateTime R Package<a href="datetime-r-package.html#datetime-r-package" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="introduction-1" class="section level2 hasAnchor" number="7.1">
-<h2><span class="header-section-number">7.1</span> Introduction<a href="datetime-r-package.html#introduction-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>This is a user guide for the <code>DateTime</code> package, which allows you to perform operations or calculations with date and time. See this guide for explanations and examples of the functions in this package.</p>
+<div id="guerilla-analytics" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">3</span> <span style="color:#E656AE;">Guerilla Analytics</span><a href="guerilla-analytics.html#guerilla-analytics" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>When working with a lot of data-files, it is essential to keep all these files organized in order to have a structured data analysis workflow framework.To build this kind of framework, I used the <span style="color:#E656AE;font-weight:bold;">Guerrilla Analytics</span>.</p>
+<p>While using the Guerrilla analytics, I kept the 7 principles of this method in mind:</p>
+<ol style="list-style-type: decimal">
+<li><p>Space is cheap, confusion is expensive</p></li>
+<li><p>Use simple, visual project structures and conventions</p></li>
+<li><p>Automate with program code</p></li>
+<li><p>Link stored data to data in the analytics environment to data in work products</p></li>
+<li><p>Version control changes to data and analytics code (Git/Github.com)</p></li>
+<li><p>Consolidate team knowledge (agree on guidelines and stick to it as a team)</p></li>
+<li><p>Use code that runs from start to finish</p></li>
+</ol>
+<hr />
+<p>For the past course, DAUR-II, I created a lot of files.
+The DAUR-II course let me work on how to analyse two real biological sets of data: <span style="color:#E656AE;font-weight:bold;">RNA-sequencing data</span> and <span style="color:#E656AE;font-weight:bold;">metagenomics data</span>.</p>
+<p>When organizing my RNA-sequencing data files (<em>Figure 1.</em>), I have first created <span style="color:#E656AE;font-weight:bold;">“README.txt”</span> text files. These README files provide the essential information about a project.
+For the RNA-sequencing data this included the different types of methods that were used to pre(process) and essential packages to install etc.</p>
+<p>Following the README.txt we have a folder called <span style="color:#E656AE;font-weight:bold;">“data”</span>. This folder contains all data processing files categorized in subfolders and a special folder for all figures.</p>
+<div class="float">
+<img src="RNAseq_folder_tree.png" alt="Figure 1. Folder tree for the RNA-sequencing data" />
+<div class="figcaption"><strong><span style="color:#E656AE; font-style:italic;">Figure 1. Folder tree for the RNA-sequencing data</span></strong></div>
 </div>
-<div id="installation" class="section level2 hasAnchor" number="7.2">
-<h2><span class="header-section-number">7.2</span> Installation<a href="datetime-r-package.html#installation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>To use the <code>DateTime</code> package, use the code below in your console.</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="datetime-r-package.html#cb34-1" tabindex="-1"></a><span class="co"># install packages &quot;usethis&quot; and &quot;devtools&quot; if they are not already installed </span></span>
-<span id="cb34-2"><a href="datetime-r-package.html#cb34-2" tabindex="-1"></a><span class="fu">library</span>(usethis)</span>
-<span id="cb34-3"><a href="datetime-r-package.html#cb34-3" tabindex="-1"></a><span class="fu">library</span>(devtools)</span>
-<span id="cb34-4"><a href="datetime-r-package.html#cb34-4" tabindex="-1"></a></span>
-<span id="cb34-5"><a href="datetime-r-package.html#cb34-5" tabindex="-1"></a><span class="co"># Load the DateTime package in </span></span>
-<span id="cb34-6"><a href="datetime-r-package.html#cb34-6" tabindex="-1"></a><span class="fu">library</span>(DateTime)</span></code></pre></div>
+<hr />
+<p>For organizing the metagnomics data files (<em>Figure 2.</em>) the same structure has been made for the folder tree as the RNA-sequencing analyses. The only important addition to this tree is the folder for the final versions of my Rmarkdowns. My final version was named under “Meta.Rmd” in the folder “v2”.</p>
+<div class="float">
+<img src="metagenomics_folder_tree.png" alt="Figure 2. Folder tree for the metagnomics data" />
+<div class="figcaption"><span style="color:#E656AE; font-weight:bold; font-style:italic;">Figure 2. Folder tree for the metagnomics data</span></div>
 </div>
-<div id="fuctions-of-the-package" class="section level2 hasAnchor" number="7.3">
-<h2><span class="header-section-number">7.3</span> Fuctions of the package<a href="datetime-r-package.html#fuctions-of-the-package" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The package contains 4 functions which are related to date and time.</p>
-<ul>
-<li><p><code>date_difference()</code></p></li>
-<li><p><code>add_time()</code></p></li>
-<li><p><code>is_same_day()</code></p></li>
-<li><p><code>is_dutch_holiday()</code></p></li>
-</ul>
-<div id="calculating-date-difference" class="section level3 hasAnchor" number="7.3.1">
-<h3><span class="header-section-number">7.3.1</span> Calculating date difference<a href="datetime-r-package.html#calculating-date-difference" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The <code>date_difference()</code> function allows you to calculate the difference between two dates. The function uses various time units such as seconds, minutes, hours, days, weeks, months, and years.</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="datetime-r-package.html#cb35-1" tabindex="-1"></a><span class="co"># Load the DateTime package</span></span>
-<span id="cb35-2"><a href="datetime-r-package.html#cb35-2" tabindex="-1"></a><span class="fu">library</span>(DateTime)</span>
-<span id="cb35-3"><a href="datetime-r-package.html#cb35-3" tabindex="-1"></a></span>
-<span id="cb35-4"><a href="datetime-r-package.html#cb35-4" tabindex="-1"></a><span class="co"># Calculate the difference between two dates in days</span></span>
-<span id="cb35-5"><a href="datetime-r-package.html#cb35-5" tabindex="-1"></a><span class="fu">date_difference</span>(<span class="st">&quot;2024-05-21&quot;</span>, <span class="st">&quot;2024-05-22&quot;</span>, <span class="at">units =</span> <span class="st">&quot;days&quot;</span>)</span></code></pre></div>
-<pre><code>## Time difference of 1 days</code></pre>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="datetime-r-package.html#cb37-1" tabindex="-1"></a><span class="co"># Calculate the difference between two dates in weeks</span></span>
-<span id="cb37-2"><a href="datetime-r-package.html#cb37-2" tabindex="-1"></a><span class="fu">date_difference</span>(<span class="st">&quot;2024-05-21&quot;</span>, <span class="st">&quot;2024-06-21&quot;</span>, <span class="at">units =</span> <span class="st">&quot;weeks&quot;</span>)</span></code></pre></div>
-<pre><code>## Time difference of 4.428571 weeks</code></pre>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="datetime-r-package.html#cb39-1" tabindex="-1"></a><span class="co"># Calculate the difference between two dates in years</span></span>
-<span id="cb39-2"><a href="datetime-r-package.html#cb39-2" tabindex="-1"></a><span class="fu">date_difference</span>(<span class="st">&quot;2024-05-21&quot;</span>, <span class="st">&quot;2025-05-22&quot;</span>, <span class="at">units =</span> <span class="st">&quot;years&quot;</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;Time difference of 1.00205338809035 years&quot;</code></pre>
-</div>
-<div id="add-time-to-a-date" class="section level3 hasAnchor" number="7.3.2">
-<h3><span class="header-section-number">7.3.2</span> Add time to a date<a href="datetime-r-package.html#add-time-to-a-date" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The <code>add_time()</code> function adds a certain amount of time to the filled in date.</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="datetime-r-package.html#cb41-1" tabindex="-1"></a><span class="co"># Add 1 hour</span></span>
-<span id="cb41-2"><a href="datetime-r-package.html#cb41-2" tabindex="-1"></a><span class="fu">add_time</span>(<span class="st">&quot;2024-05-21 08:00:00&quot;</span>, <span class="dv">1</span>, <span class="st">&quot;hours&quot;</span>) </span></code></pre></div>
-<pre><code>## [1] &quot;2024-05-21 09:00:00 CEST&quot;</code></pre>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="datetime-r-package.html#cb43-1" tabindex="-1"></a><span class="co"># Add 2 weeks </span></span>
-<span id="cb43-2"><a href="datetime-r-package.html#cb43-2" tabindex="-1"></a><span class="fu">add_time</span>(<span class="st">&quot;2024-07-22 07:00:00&quot;</span>, <span class="dv">2</span>, <span class="st">&quot;weeks&quot;</span>) </span></code></pre></div>
-<pre><code>## [1] &quot;2024-08-05 07:00:00 CEST&quot;</code></pre>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="datetime-r-package.html#cb45-1" tabindex="-1"></a><span class="co"># Add 54 seconds</span></span>
-<span id="cb45-2"><a href="datetime-r-package.html#cb45-2" tabindex="-1"></a><span class="fu">add_time</span>(<span class="st">&quot;2024-05-21 08:00:00&quot;</span>, <span class="dv">54</span>, <span class="st">&quot;seconds&quot;</span>) </span></code></pre></div>
-<pre><code>## [1] &quot;2024-05-21 08:00:54 CEST&quot;</code></pre>
-</div>
-<div id="check-if-two-dates-are-on-the-same-day" class="section level3 hasAnchor" number="7.3.3">
-<h3><span class="header-section-number">7.3.3</span> Check if two dates are on the same day<a href="datetime-r-package.html#check-if-two-dates-are-on-the-same-day" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The <code>is_same_day()</code> function checks whether two dates fall on the same weekday. If so, it returns “TRUE” and gives the name of the weekday. If not, it returns “FALSE” and gives you the two different weekday names.</p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="datetime-r-package.html#cb47-1" tabindex="-1"></a><span class="co"># Check if the 21st of May 2024 falls on the same day as 21st of May 2024. </span></span>
-<span id="cb47-2"><a href="datetime-r-package.html#cb47-2" tabindex="-1"></a><span class="fu">is_same_day</span>(<span class="st">&quot;2024-05-21&quot;</span>, <span class="st">&quot;2024-05-21&quot;</span>)</span></code></pre></div>
-<pre><code>## $same_day
-## [1] TRUE
-## 
-## $day_of_week
-## [1] &quot;dinsdag&quot;</code></pre>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="datetime-r-package.html#cb49-1" tabindex="-1"></a><span class="co"># Check if the 4th of May 2024 falls on the same day as the 2nd of February 2024</span></span>
-<span id="cb49-2"><a href="datetime-r-package.html#cb49-2" tabindex="-1"></a><span class="fu">is_same_day</span>(<span class="st">&quot;2024-05-04&quot;</span>, <span class="st">&quot;2024-02-02&quot;</span>)</span></code></pre></div>
-<pre><code>## $same_day
-## [1] FALSE
-## 
-## $day_of_week_1
-## [1] &quot;zaterdag&quot;
-## 
-## $day_of_week_2
-## [1] &quot;vrijdag&quot;</code></pre>
-</div>
-<div id="check-for-dutch-holidays" class="section level3 hasAnchor" number="7.3.4">
-<h3><span class="header-section-number">7.3.4</span> Check for Dutch holidays<a href="datetime-r-package.html#check-for-dutch-holidays" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The <code>is_dutch_holiday()</code> function checks if the given date, is also a (legal) Dutch holiday.
-These holidays are:</p>
-<ul>
-<li><p>New Year’s Day</p></li>
-<li><p>Goede Vrijdag / Good Friday</p></li>
-<li><p>Easter</p></li>
-<li><p>Second Easter Day</p></li>
-<li><p>King’s Day</p></li>
-<li><p>Liberation Day (every 5 years)</p></li>
-<li><p>Ascension Day</p></li>
-<li><p>Pentecost</p></li>
-<li><p>Second Pentecost</p></li>
-<li><p>Christmas Day</p></li>
-<li><p>Second Christmas Day</p></li>
-</ul>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="datetime-r-package.html#cb51-1" tabindex="-1"></a><span class="fu">is_dutch_holiday</span>(<span class="st">&quot;2024-01-01&quot;</span>)</span></code></pre></div>
-<pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="datetime-r-package.html#cb53-1" tabindex="-1"></a><span class="fu">is_dutch_holiday</span>(<span class="st">&quot;2024-08-12&quot;</span>)</span></code></pre></div>
-<pre><code>## [1] FALSE</code></pre>
 
-</div>
-</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="sql.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="projecticum-ner.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="cv.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="open-peer-review.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
