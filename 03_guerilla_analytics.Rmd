@@ -1,2 +1,42 @@
-# R Markdown
+# <span style="color:#E656AE;">Guerilla Analytics</span>
+
+When working with a lot of data-files, it is essential to keep all these files organized in order to have a structured data analysis workflow framework.To build this kind of framework, I used the <span style="color:#E656AE;font-weight:bold;">Guerrilla Analytics</span>. 
+
+While using the Guerrilla analytics, I kept the 7 principles of this method in mind:
+
+1. Space is cheap, confusion is expensive
+
+2. Use simple, visual project structures and conventions
+
+3. Automate with program code
+
+4. Link stored data to data in the analytics environment to data in work products 
+
+5. Version control changes to data and analytics code (Git/Github.com)
+
+6. Consolidate team knowledge (agree on guidelines and stick to it as a team)
+
+7. Use code that runs from start to finish
+
+
+
+---
+
+
+For the past course, DAUR-II, I created a lot of files.
+The DAUR-II course let me work on how to analyse two real biological sets of data: <span style="color:#E656AE;font-weight:bold;">RNA-sequencing data</span> and <span style="color:#E656AE;font-weight:bold;">metagenomics data</span>.
+
+When organizing my RNA-sequencing data files (*Figure 1.*), I have first created <span style="color:#E656AE;font-weight:bold;">"README.txt"</span> text files. These README files provide the essential information about a project. 
+For the RNA-sequencing data this included the different types of methods that were used to pre(process) and essential packages to install etc.
+
+Following the README.txt we have a folder called <span style="color:#E656AE;font-weight:bold;">"data"</span>. This folder contains all data processing files categorized in subfolders and a special folder for all figures. 
+
+![**<span style="color:#E656AE; font-style:italic;">Figure 1. Folder tree for the RNA-sequencing data</span>**](~/bookdown/RNAseq_folder_tree.png)
+
+---
+
+
+For organizing the metagnomics data files (*Figure 2.*) the same structure has been made for the folder tree as the RNA-sequencing analyses. The only important addition to this tree is the folder for the final versions of my Rmarkdowns. My final version was named under "Meta.Rmd" in the folder "v2".     
+
+![<span style="color:#E656AE; font-weight:bold; font-style:italic;">Figure 2. Folder tree for the metagnomics data</span>](~/bookdown/metagenomics_folder_tree.png)
 
