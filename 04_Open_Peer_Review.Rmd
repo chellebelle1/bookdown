@@ -1,4 +1,4 @@
-# Open Peer Review 
+# <span style="color:#E656AE;">Open Peer Review</span>
 
 ## Article
 An, A.Y. et al. (2023) Dynamic gene expression analysis reveals distinct severity phases of immune and cellular dysregulation in COVID-19, bioRxiv. Available at: https://www.biorxiv.org/content/10.1101/2023.11.04.565404v1.full (Accessed: 02 May 2024). 
