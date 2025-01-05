@@ -1,4 +1,9 @@
-# SQL
+# <span style="color:#E656AE;">SQL</span>
+
+The datasets flu_data and dengue_data are loaded using the `read_csv()` function, while `gapminder_data` is directly used from the gapminder dataset.
+After loading the data, they are tidied using `pivot_longer()` to transform the data into a long format. This separates columns for countries and values, adding a year column extracted from the Date column using `str_sub()`.The tidied datasets are then saved as both CSV and RDS files. This is done using `write.csv()` and `saveRDS()`. Following that, a connection is established with a PostgreSQL database named workflowsdb using `dbConnect()`. Tables for flu, dengue, and gapminder are then written to the database using `dbWriteTable()`. After saving the data to the database, the tables are combined using dplyr functions `full_join()` and `inner_join()`. This results in a combined dataset that is further visualized. Finally, visualizations are created, including a boxplot of dengue cases per year in Brazil and a bar chart showing average dengue cases per year.
+
+Using SQL, I was able to load datasets, tidying the data, and then store them in a PostgreSQL database. DBBeaver was used as the tool to connect to and manage the PostgreSQL database. DBBeaver is a powerful, open-source database management tool that simplifies interacting with databases by providing a user-friendly interface for running SQL queries, creating tables, managing schemas, and performing various data operations.
 
 ```{r, message=FALSE, warning=FALSE}
 # Load required libraries
@@ -84,14 +89,20 @@ dengue_Brazil <- flu_dengue_gapminder %>% select(Year, Country, Value_dengue) %>
 dengue_sum <- dengue_Brazil %>%
   group_by(Year) %>% summarise(mean = mean(Value_dengue, na.rm = TRUE), stedv = sd(Value_dengue, na.rm= TRUE))
 
+ggplot(dengue_sum, aes(x = as.factor(Year), y = mean)) +
+  geom_point(color = "pink") +
+  labs(title = "Dengue Cases in Brazil (Per Year)",
+       x = "Year",
+       y = "Average Number of Cases") +
+  theme_minimal()
+
 # Barchart of dengue cases per year
-dengue_plot <- ggplot(dengue_sum, aes(x = as.factor(Year), y = mean)) +
+denguebar_plot <- ggplot(dengue_sum, aes(x = as.factor(Year), y = mean)) +
   geom_col(fill = "lightpink", color = "grey") +
   labs(title = "Dengue cases Brazil (in years)",
        x = "Year",
        y = "Average cases of dengue") +
   theme_minimal()
-dengue_plot
-
+denguebar_plot
 ```
 

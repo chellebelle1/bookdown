@@ -1,7 +1,13 @@
 ---
+title: "Portfolio"
+author: "Rachelle Balgit"
 site: bookdown::bookdown_site
 documentclass: book
-output: bookdown::gitbook
+bookdown::gitbook: default
+link-citations: true
+biblio-style: apalike
+description: This is a minimal example of using the bookdown package to write a book.
+  The output format for this example is bookdown::gitbook.
 ---
 
 # Introduction

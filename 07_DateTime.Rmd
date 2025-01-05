@@ -1,9 +1,9 @@
-# DateTime R Package 
+# <span style="color:#E656AE;">DateTime R Package</span> 
 
-## Introduction
+## Introduction {-}
 This is a user guide for the `DateTime` package, which allows you to perform operations or calculations with date and time. See this guide for explanations and examples of the functions in this package. 
 
-## Installation
+## Installation {-}
 To use the `DateTime` package, use the code below in your console. 
 
 ```{r setup, eval=TRUE, echo=TRUE}
@@ -15,7 +15,7 @@ library(devtools)
 library(DateTime)
 ```
 
-## Fuctions of the package 
+## Fuctions of the package {-} 
 The package contains 4 functions which are related to date and time. 
 
 - `date_difference()`
@@ -27,7 +27,7 @@ The package contains 4 functions which are related to date and time.
 - `is_dutch_holiday()`
 
 
-### Calculating date difference 
+### Calculating date difference {-} 
 The `date_difference()` function allows you to calculate the difference between two dates. The function uses various time units such as seconds, minutes, hours, days, weeks, months, and years.
 
 ```{r, date_difference, echo=TRUE, eval=TRUE}
@@ -43,7 +43,7 @@ date_difference("2024-05-21", "2025-05-22", units = "years")
 
 ```
 
-### Add time to a date 
+### Add time to a date {-} 
 The `add_time()` function adds a certain amount of time to the filled in date. 
 ```{r, add_time, eval=TRUE, echo=TRUE}
 # Add 1 hour
@@ -54,7 +54,7 @@ add_time("2024-07-22 07:00:00", 2, "weeks")
 add_time("2024-05-21 08:00:00", 54, "seconds") 
 ```
 
-### Check if two dates are on the same day
+### Check if two dates are on the same day {-}
 The `is_same_day()` function checks whether two dates fall on the same weekday. If so, it returns "TRUE" and gives the name of the weekday. If not, it returns "FALSE" and gives you the two different weekday names. 
 
 ```{r, same day, eval=TRUE, echo=TRUE}
@@ -64,7 +64,7 @@ is_same_day("2024-05-21", "2024-05-21")
 is_same_day("2024-05-04", "2024-02-02")
 ```
 
-### Check for Dutch holidays
+### Check for Dutch holidays {-}
 The `is_dutch_holiday()` function checks if the given date, is also a (legal) Dutch holiday. 
 These holidays are:
 

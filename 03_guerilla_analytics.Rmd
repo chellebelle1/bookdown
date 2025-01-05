@@ -31,12 +31,18 @@ For the RNA-sequencing data this included the different types of methods that we
 
 Following the README.txt we have a folder called <span style="color:#E656AE;font-weight:bold;">"data"</span>. This folder contains all data processing files categorized in subfolders and a special folder for all figures. 
 
-![**<span style="color:#E656AE; font-style:italic;">Figure 1. Folder tree for the RNA-sequencing data</span>**](~/bookdown/RNAseq_folder_tree.png)
+![**<span style="color:#E656AE; font-style:italic;">Figure 1. Folder tree for the RNA-sequencing data</span>**](~/bookdown/photos/RNAseq_folder_tree.png)
 
 ---
 
 
 For organizing the metagnomics data files (*Figure 2.*) the same structure has been made for the folder tree as the RNA-sequencing analyses. The only important addition to this tree is the folder for the final versions of my Rmarkdowns. My final version was named under "Meta.Rmd" in the folder "v2".     
 
-![<span style="color:#E656AE; font-weight:bold; font-style:italic;">Figure 2. Folder tree for the metagnomics data</span>](~/bookdown/metagenomics_folder_tree.png)
+![<span style="color:#E656AE; font-weight:bold; font-style:italic;">Figure 2. Folder tree for the metagnomics data</span>](~/bookdown/photos/metagenomics_folder_tree.png)
+
+This is my folder structure for the githubpages:
+
+```{r}
+fs::dir_tree(here::here("C:/Users/rache/OneDrive/Documenten/bookdown"))
+```
 

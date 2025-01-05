@@ -1,7 +1,7 @@
-# CV 
-Motivated student persuing degree in biomedical sciences, with a big interest in microbiology and data science. Excellent analytical and communication skills. Speaks fluent Dutch and English. Always eager to learn and seeking for new experiences.  I am always hard working, organized and capable of working in a team or individual. 
+# <span style="color:#E656AE;">CV</span> 
+Motivated student persuing degree in biomedical sciences, with a big interest in microbiology and data science. Speaks fluent Dutch and English. Always eager to learn and seeking for new experiences. Always hard working, organized and capable of working in a team or individual. 
 
-## Education
+## Education {-}
 
 Bachelor’s Degree
 Life Sciences (biomedical sciences), Hogeschool Utrecht (2020-current)
@@ -10,7 +10,7 @@ Life Sciences (biomedical sciences), Hogeschool Utrecht (2020-current)
 
 •	Minor in Data science for biology part 1 and 2 
 
-## Important Courses
+## Important Courses {-}
 
 •	Medical Microbiological Diagnosis 
 
@@ -22,7 +22,7 @@ Life Sciences (biomedical sciences), Hogeschool Utrecht (2020-current)
 
 •	Experimental Design  
 
-## Projects 
+## Projects {-} 
 
 **Project Genes & Proteins: Determination of expression of IL-8 with a green fluorescent protein**
 
@@ -36,7 +36,7 @@ Life Sciences (biomedical sciences), Hogeschool Utrecht (2020-current)
 
   - Using spectrometry and different isolation methods 
 
-## Minor Data science for Biology 
+## Minor Data science for Biology {-} 
 
 Data analysis using R 
 
@@ -46,7 +46,7 @@ Data analysis using R
   
   - Next Generation Sequencing 
 
-## Important Skills
+## Important Skills {-}
 
 •	MALDI-TOF
 

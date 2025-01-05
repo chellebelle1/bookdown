@@ -1,9 +1,110 @@
-# <span style="color:#E656AE;">Open Peer Review</span>
+# <span style="color:#E656AE;">Reproducible Research</span>
 
-## Article
+## C. elegans experiment {-}
+*The data for this exercise was kindly supplied by J. Louter (INT/ILC) and was derived from an experiment in which adult C.elegans nematodes were exposed to varying concentrations of different compounds.*
+
+First we load in the dataset. 
+
+```{r, eval=TRUE, echo=TRUE, warning=FALSE}
+library(readxl)
+CE_LIQ_FLOW_062_Tidydata <- read_excel("~/CE.LIQ.FLOW.062_Tidydata.xlsx")
+head(CE_LIQ_FLOW_062_Tidydata)
+```
+
+You would expect the columns <span style="color:#E656AE;">RawData</span>, <span style="color:#E656AE;">compName</span> and <span style="color:#E656AE;">compConcentration</span> all to be numeric. These are the colums we are interested in. 
+
+- <span style="color:#E656AE;">RawData</span> = the outcome - number of offspring counted as an integer value, after incubation time, 
+
+- <span style="color:#E656AE;">compName</span> = the generic name of the compound/chemical 
+
+- <span style="color:#E656AE;">compConcentration</span> = the concentration of the compound
+
+```{r, eval=TRUE, echo=TRUE, warning=FALSE}
+# inspect the data types of colums RawData, compName and compConcentration
+class(CE_LIQ_FLOW_062_Tidydata$RawData)
+class(CE_LIQ_FLOW_062_Tidydata$compName)
+class(CE_LIQ_FLOW_062_Tidydata$compConcentration)
+```
+
+But in R the variable <span style="color:#E656AE;">compConcentration</span> is not 'numeric', it is of the data type 'character'. 
+
+```{r, eval=TRUE, echo=TRUE, warning=FALSE, message=FALSE}
+# convert column compConcentration from character to numeric 
+# Remove NA and convert to numeric 
+library(dplyr)
+
+CE_LIQ_FLOW_062_Tidydata <- CE_LIQ_FLOW_062_Tidydata %>%
+  mutate(compConcentration = as.numeric(compConcentration)) %>% 
+  filter(!is.na(compConcentration))             
+```
+
+
+### Scatterplot {-}
+Scatterplot of the data set for the different compounds and the varying concentrations down below:
+
+```{r, eval=TRUE, echo=FALSE, warning=FALSE}
+library(ggplot2)
+
+ggplot(
+  data = CE_LIQ_FLOW_062_Tidydata, 
+  aes(x = log10(compConcentration), y = RawData)) +
+  geom_point(
+    aes(color = compName, shape = expType),
+    size = 1.5, 
+    alpha = 0.8,
+    position = position_jitter(width = 0.1)) + 
+  labs(
+    x = "log10(compConcentration) in nM",
+    y = "RawData in counts")
+```
+
+
+<span style="color:#E656AE;font-weight:bold;">Figuur 3. Scatterplot of different compounds and varying concentrations</span>
+
+The positive control for this experiment is <span style="color:#E656AE;">ethanol</span> and the negative control is <span style="color:#E656AE;">S-medium</span>.
+
+### Normalizing the data {-} 
+
+For the dataset CE_LIQ_FLOW_062_Tidydata, the controleNegative condition was normalized so that its average value equals 1. All values are expressed as a fraction of this, which helps standardize the data and facilitates the interpretation and comparison of the effects of different conditions.
+
+```{r}
+# Calculate mean value of controlNegative
+controlNegative <- CE_LIQ_FLOW_062_Tidydata %>% filter(CE_LIQ_FLOW_062_Tidydata$expType == "controlNegative")
+controlNegative_mean <- mean(controlNegative$RawData) 
+controlNegative_mean
+
+# Normalize data
+CE_LIQ_FLOW_062_Tidydata <- CE_LIQ_FLOW_062_Tidydata %>% mutate(normalized = CE_LIQ_FLOW_062_Tidydata$RawData / controlNegative_mean)
+
+# Inspect the data types of columns RawData, compName, expType, compConcentration and normalized
+CE_LIQ_FLOW_062_Tidydata %>% select(RawData, compName, compConcentration, expType, normalized)
+```
+
+```{r, eval=TRUE, echo=FALSE, warning=FALSE}
+ggplot(
+    data = CE_LIQ_FLOW_062_Tidydata, 
+    aes(x = log10(compConcentration), y = normalized))+
+  geom_point(
+    aes(color = compName, shape = expType),
+    size = 1.5, 
+    alpha = 0.8,
+    position = position_jitter(width = 0.1))+ 
+  labs(
+    title = "Scatterplot CE_LIQ_FLOW_062_Tidydata",
+    caption = "Data normalized with the negative control mean",
+    x = "log10(compConcentration) in nM",
+    y = "RawData in counts")
+```
+
+
+<span style="color:#E656AE;font-weight:bold;">Figuur 4. Scatterplot of different compounds and varying concentrations normalized with the mean of the negative control</span>
+
+---
+
+## Article {-}
 An, A.Y. et al. (2023) Dynamic gene expression analysis reveals distinct severity phases of immune and cellular dysregulation in COVID-19, bioRxiv. Available at: https://www.biorxiv.org/content/10.1101/2023.11.04.565404v1.full (Accessed: 02 May 2024). 
 
-## Summary
+### Summary {-}
 Objective 
 To investigate longitudinal changes in gene expression profiles throughout the COVID-19 disease timeline.
 
@@ -17,7 +118,7 @@ Conclusions
 Higher temporal resolution of longitudinal mechanisms in COVID-19 revealed multiple immune and cellular changes that were activated at different phases of COVID-19. Understanding how a patient’s gene expression profile changes over time can permit more accurate risk stratification of patients and provide time-dependent personalized treatments with repurposed medications. This creates an opportunity for timely intervention before patients transition to a more severe phase, potentially accelerating patients to recovery.
 
 
-## Review 
+### Review {-} 
 The article has been evaluated according to the criteria listed in the table below.
 
 
