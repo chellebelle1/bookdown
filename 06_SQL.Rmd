@@ -59,11 +59,11 @@ dbWriteTable(con, "dengue", dengue_tidy)
 ```
 
 
-```{r, message=FALSE, warning=FALSE}
+```{r, message=FALSE, warning=FALSE, echo=FALSE}
 # Inspect contents of the tables
-knitr::include_graphics("C:\\Users\\rache\\OneDrive\\Documenten\\Schermafbeelding 2024-08-18 230338.png")
-knitr::include_graphics("C:\\Users\\rache\\OneDrive\\Documenten\\Schermafbeelding 2024-08-18 230429.png")
-knitr::include_graphics("C:\\Users\\rache\\OneDrive\\Documenten\\Schermafbeelding 2024-08-18 230509.png")
+knitr::include_graphics("C:\\Users\\rache\\OneDrive\\Documenten\\bookdown\\Schermafbeelding 2024-08-18 230338.png")
+knitr::include_graphics("C:\\Users\\rache\\OneDrive\\Documenten\\bookdown\\Schermafbeelding 2024-08-18 230429.png")
+knitr::include_graphics("C:\\Users\\rache\\OneDrive\\Documenten\\bookdown\\Schermafbeelding 2024-08-18 230509.png")
 ```
 
 
