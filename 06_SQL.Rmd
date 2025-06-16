@@ -68,6 +68,14 @@ knitr::include_graphics("C:\\Users\\rache\\OneDrive\\Documenten\\bookdown\\Scher
 
 
 ```{r, message=FALSE, warning=FALSE}
+library(tidyr)
+library(dplyr)
+library(stringr)
+library(DBI)
+library(RPostgres)
+library(readr)
+library(dslabs)
+library(ggplot2)
 # Join the tables together
 flu_tidy <- flu_tidy %>% mutate(year = as.character(year))
 dengue_tidy <- dengue_tidy %>% mutate(year = as.character(year))
@@ -103,6 +111,7 @@ denguebar_plot <- ggplot(dengue_sum, aes(x = as.factor(Year), y = mean)) +
        x = "Year",
        y = "Average cases of dengue") +
   theme_minimal()
+
 denguebar_plot
 ```
 
