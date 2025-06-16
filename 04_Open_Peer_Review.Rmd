@@ -99,6 +99,48 @@ ggplot(
 
 <span style="color:#E656AE;font-weight:bold;">Figuur 4. Scatterplot of different compounds and varying concentrations normalized with the mean of the negative control</span>
 
+### Future Research {-}
+To determine the effect of different chemicals on the _C. elegans_ model and its offspring, a dosis response analysis would be the next step. This would allow to calculate the IC₅₀ value, which is the concentration at which a compound reduces the offspring by 50%. The `drc` package in R is commonly used for this purpose. 
+
+We begin by grouping data per compound and visualizing how offspring numbers vary by concentration. Then we fit a dose-response model to estimate the concentration at which the response (offspring count) drops by half --> the IC₅₀ value.
+
+
+1. Installing the `drc` package 
+```{r, eval=FALSE}
+install.packages("drc")
+library(drc)
+```
+
+2. Filter the dataset for a specific compound and experimental conditions
+```{r, eval=FALSE}
+compound_data <- CE_LIQ_FLOW_062_Tidydata %>%
+  filter(compName == "2,6-diisopropylnaphthalene", expType == "experiment")
+```
+
+3. Use a four-parameter log-logistic model
+(This model estimates the relationship between the compound concentration and the biological effect (in our case, the normalized number of offspring). It assumes that the response follows a sigmoidal (S-shaped) curve, which is typical in toxicology.)
+
+```{r, eval=FALSE}
+celegans <- drm(normalized ~ compConcentration,
+             data = compound_data,
+             fct = LL.4())
+```
+
+4. Calculate the data and summarize 
+```{r, eval=FALSE}
+summary(celegans)
+ED(celegans, 50) 
+```
+
+5. Plot the dosis response curve
+This visualizes the calculation of step 4. 
+```{r, eval=FALSE}
+plot(celegans, type = "all",
+     xlab = "Concentration (µM)",
+     ylab = "Normalized Offspring",
+     main = "Dose-Response Curve for 2,6-diisopropylnaphthalene")
+```
+
 ---
 
 ## Article {-}
@@ -132,3 +174,37 @@ The article has been evaluated according to the criteria listed in the table bel
 | Ethics Statement            	| A statement within the manuscript indicating any ethical concerns, including the presence of sensitive data.                                                                                                                                                             	| yes                                                                                                                                                             	|   	|   	|
 | Funding Statement           	| A statement within the manuscript indicating whether or not the authors received funding for their research.                                                                                                                                                             	| yes                                                                                                                                                             	|   	|   	|
 | Code Availability           	| Authors have shared access to the most updated code that they used in their study, including code used for analysis.                                                                                                                                                     	| no                                                                                                                                                              	|   	|   	|
+
+
+## Reproducible data
+In addition to reviewing scientific articles, the reproducibility of R code is also assessed in research papers. For this review, we examine the study by Kragness and Cirelli on infant behavior to evaluate various aspects, interactions, and emotional responses during a musical concert. The article used for this review is titled “A concert for babies: Attentional, affective, and motor responses in an infant audience.”
+
+After studying the R script, it appears to be an analytical study of associations between different behavioral aspects during music playback. It performs statistical analyses, such as correlation tests, and generates visualizations. On a scale from 1 (very bad) to 5 (very good), I would rate the script a 4 for readability. The code is generally clear, well-structured, and organized with comments. However, it would benefit from additional comments that offer more detailed explanations of the code's functionality.
+
+While running the script, I encountered a few minor errors. For example, when loading the data, the path was missing in the `setwd()` function. This was corrected by directing it to the folder named `'les4'`.
+
+In the **Demographics** code chunk, the columns `Gender` and `BabyMusiClass` were not found as objects in the `df.wide` dataframe. I resolved the issue with `BabyMusiClass` by referencing it as `df.wide$BabyMusiClass`. The `Gender` column was stored as a *character* rather than a *factor*, which made counting values problematic. I adjusted this by using `table(df.wide$Gender)` to correctly display the gender counts in the console.
+
+On a scale from **1 (very bad)** to **5 (very good)**, I would rate the script a **4** for **reproducibility**. The required changes were minor and easily implemented, such as correcting file paths or referencing variables explicitly. The visualizations were provided as PNG files, and all necessary libraries were loaded at the beginning of the RMarkdown file.
+
+Below is an example of a code section used to generate a `geom_density` plot. This visualization gets a **5** for reproducibility.
+
+
+```{r, eval=FALSE}
+png("attentionDensity.png", units="in", width=5, height=5, res=300)
+
+dens.perc <- ggplot(df, aes(BabyAttShow.Prop,fill = SongCond, linetype=IntCond),..scaled..) + geom_density(alpha = 0.2)+theme_classic()+
+    scale_linetype_manual(values=c("solid", "dashed"))+
+    scale_fill_manual(values=c("plum4","seagreen3"))+
+    xlab("Proportion of epochs containing looks to show")+
+  ylab("Kernel density")+
+  theme(legend.position = "none")
+
+dens.perc
+dev.off()
+```
+
+```{r, echo=FALSE}
+knitr::include_graphics("C:/Users/rache/OneDrive/Documenten/bookdown/photos/Schermafbeelding 2025-06-16 004741.png")
+```
+

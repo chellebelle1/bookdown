@@ -16,79 +16,76 @@ reactable(covid_data, defaultPageSize =10, compact = TRUE)
 ```
 
 ## Line chart the Netherlands, Belgium and Germany {-}
-Using the ECDC COVID-19 data, there is a visual representation of COVID-19 cases and deaths in selected countries and years. The graphs display the number of cases and deaths per date. By utilizing parameterization in the R code with params$, this report can be easily tailored to specific interests without needing to modify the underlying code.
-```{r, echo=F, message=F, fig.cap= "Line chart of the COVID-19 data from the Netherlands, Belgium and Germany, with the date in years and month on t x-axis, and the amount of cases on the y-axis. de datum in jaar en maand op de x-as staat, de aantal cases op de y-as."}
+Using the ECDC COVID-19 data, there is a visual representation of COVID-19 cases and deaths in selected countries and years. The graphs display the number of cases and deaths per date. By utilizing parameterization in the R code with `params$`, this report can be easily tailored to specific interests without needing to modify the underlying code.
 
-library(ggplot2)
+```{r, message=FALSE, warning=FALSE}
+library(tidyverse)
 
 # parameters
-param <- list(
-  selecteer_land= c('the Netherlands', 'Germany', 'Belgium'),
-  selecteer_jaar= 2020
+params <- list(
+  selecteer_land = c("Netherlands", "Germany", "Belgium"),
+  selecteer_jaar = 2020
 )
 
-# converteer dateRep naar het Date-type
-covid_data$dateRep <- as.Date(covid_data$dateRep, format='%d/%m/%Y')
+# Datum omzetten
+selecteer_data <- covid_data %>%
+  mutate(dateRep = as.Date(dateRep, format = "%d/%m/%Y")) %>%
+  filter(
+    countriesAndTerritories %in% params$selecteer_land,
+    format(dateRep, "%Y") == as.character(params$selecteer_jaar)
+  )
 
-# filter de data voor geselecteerde landen
-selecteer_data <- subset(covid_data, countriesAndTerritories %in% param$selecteer_land & format(dateRep, "%Y") == param$selecteer_jaar)
 
-# aggregeer de data per datum en land
-agg_data <- aggregate(cbind(cases, deaths) ~ dateRep + countriesAndTerritories, data=selecteer_data, sum)
+plot_data <- selecteer_data %>%
+  select(dateRep, countriesAndTerritories, cases, deaths) %>%
+  pivot_longer(cols = c(cases, deaths), names_to = "type", values_to = "aantal")
 
-# grafiek cases
-cases_plot <- ggplot(agg_data, aes(x=dateRep, y=cases, color=countriesAndTerritories)) +
+# Plot 
+ggplot(plot_data, aes(x = dateRep, y = aantal, color = type)) +
   geom_line() +
-  labs(title=paste('COVID-19 cases in selected countries in time', param$selecteer_jaar), x='Date', y=' amount of cases') +
-  theme_minimal()
-
-# grafiek deaths
-deaths_plot <- ggplot(agg_data, aes(x=dateRep, y=deaths, color=countriesAndTerritories)) +
-  geom_line() +
-  labs(title=paste('COVID-19 deaths in selected countries in time', param$selecteer_jaar), x='Date', y='amount of cases') +
-  theme_minimal()
-
-# plot grafieken
-print(cases_plot)
-print(deaths_plot)
+  facet_wrap(~countriesAndTerritories) +
+  labs(
+    title = paste("COVID-19 cases and deaths in", params$selecteer_jaar),
+    x = "Date", y = "Count", color = "Type"
+  ) +
+  theme_minimal() + scale_x_date(date_breaks = "1 month", date_labels = "%b %Y") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
 ```
 
+
 ## Line chart Romania, Liechtenstein and Italy {-}
 To verify that the parameterization is working correctly, you can adjust the values in the parameter list. In this example, the countries Romania, Norway, and Italy are used, along with the year 2022
-```{r, echo=F, message=F, fig.cap= "Line chart of COVID-19 data, with the date in year and month on the x-axis, the number of cases on the y-axis. Different colors represent the selected countries Romania, Liechtenstein, and Italy."}
-library(ggplot2)
+
+```{r message=FALSE, warning=FALSE}
+# Laad packages
+library(tidyverse)
 
 # parameters
-param <- list(
-  selecteer_land= c('Romania', 'Liechtenstein', 'Italy'),
-  selecteer_jaar= 2022
+params <- list(
+  selecteer_land = c('Romania', 'Liechtenstein', 'Italy'),
+  selecteer_jaar = 2022
 )
 
-# converteer dateRep naar het Date-type
-covid_data$dateRep <- as.Date(covid_data$dateRep, format='%d/%m/%Y')
+plot_data <- covid_data %>%
+  mutate(dateRep = as.Date(dateRep, format = "%d/%m/%Y")) %>%
+  filter(
+    countriesAndTerritories %in% params$selecteer_land,
+    format(dateRep, "%Y") == as.character(params$selecteer_jaar)
+  ) %>%
+  select(dateRep, countriesAndTerritories, cases, deaths) %>%
+  pivot_longer(cols = c(cases, deaths), names_to = "type", values_to = "aantal")
 
-# filter de data voor geselecteerde landen
-selecteer_data <- subset(covid_data, countriesAndTerritories %in% param$selecteer_land & format(dateRep, "%Y") == param$selecteer_jaar)
-
-# aggregeer de data per datum en land
-agg_data <- aggregate(cbind(cases, deaths) ~ dateRep + countriesAndTerritories, data=selecteer_data, sum)
-
-# grafiek cases
-cases_plot <- ggplot(agg_data, aes(x=dateRep, y=cases, color=countriesAndTerritories)) +
+# Grafiek maken met cases en deaths 
+ggplot(plot_data, aes(x = dateRep, y = aantal, color = countriesAndTerritories)) +
   geom_line() +
-  labs(title=paste('COVID-19 cases in slected countries in time', param$selecteer_jaar), x='Date', y='Amount of cases') +
-  theme_minimal()
-
-# grafiek deaths
-deaths_plot <- ggplot(agg_data, aes(x=dateRep, y=deaths, color=countriesAndTerritories)) +
-  geom_line() +
-  labs(title=paste('COVID-19 cases in slected countries in time', param$selecteer_jaar), x='Date', y='Amount of cases') +
-  theme_minimal()
-
-# plot grafieken
-print(cases_plot)
-print(deaths_plot)
-
+  facet_wrap(~type, scales = "free_y") +
+  scale_x_date(date_breaks = "1 month", date_labels = "%b %Y") +
+  labs(
+    title = paste("COVID-19 cases and deaths in", params$selecteer_jaar),
+    x = "Date", y = "Count", color = "Country"
+  ) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
 
