@@ -22,7 +22,7 @@ Named Entity Recognition is a sub-task of information extraction that aims to lo
 
 NER is pivotal for tasks like information retrieval, question answering, and text summarization. It helps in structuring unstructured data, making it easier to analyze and use in applications.
 
-spaCy is an open-source NLP library designed for efficient and productive development. It supports tokenization, part-of-speech tagging, dependency parsing, and NER. spaCy’s models are pre-trained on large datasets, which makes it an excellent choice for building robust NLP applications [^3].
+spaCy is an open-source NLP library designed for efficient and productive development. It supports tokenization, part-of-speech tagging, dependency parsing, and NER. spaCy’s models are pre-trained on large datasets, which makes it an excellent choice for building robust NLP applications [[@montani_named_2025]].
 
 
 ## References {-} 
