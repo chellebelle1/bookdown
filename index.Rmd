@@ -3,6 +3,7 @@ title: "Portfolio"
 author: "Rachelle Balgit"
 site: bookdown::bookdown_site
 documentclass: book
+bibliography: bibliography.bib
 bookdown::gitbook: default
 link-citations: true
 biblio-style: apalike
