@@ -22,11 +22,11 @@ Named Entity Recognition is a sub-task of information extraction that aims to lo
 
 NER is pivotal for tasks like information retrieval, question answering, and text summarization. It helps in structuring unstructured data, making it easier to analyze and use in applications.
 
-spaCy is an open-source NLP library designed for efficient and productive development. It supports tokenization, part-of-speech tagging, dependency parsing, and NER. spaCy’s models are pre-trained on large datasets, which makes it an excellent choice for building robust NLP applications [[@montani_named_2025]].
+spaCy is an open-source NLP library designed for efficient and productive development. It supports tokenization, part-of-speech tagging, dependency parsing, and NER. spaCy’s models are pre-trained on large datasets, which makes it an excellent choice for building robust NLP applications [@montani_named_2025].
 
 
 ## References {-} 
-[^2]: Deepika, D., & Kumar, V. (2023). The role of “Physiologically Based Pharmacokinetic Model (PBPK)” New Approach Methodology (NAM) in Pharmaceuticals and Environmental Chemical Risk assessment. International Journal of Environmental Research and Public Health, 20(4), 3473. https://doi.org/10.3390/ijerph20043473
+[^1]: Deepika, D., & Kumar, V. (2023). The role of “Physiologically Based Pharmacokinetic Model (PBPK)” New Approach Methodology (NAM) in Pharmaceuticals and Environmental Chemical Risk assessment. International Journal of Environmental Research and Public Health, 20(4), 3473. https://doi.org/10.3390/ijerph20043473
 
 [^3]: Montani, I. (2019, August 22). Getting started with Prodigy: A step-by-step guide. Ines Montani. https://ines.io/blog/prodigy-first-steps
 
